@@ -73,23 +73,23 @@ version: '3.8'
 
 services:
   # Frontend Application (Add this)
-  frontend:
-    build:
-      context: ./frontend  # adjust path to your frontend folder
-      dockerfile: Dockerfile
-    container_name: sales_training_frontend
-    ports:
-      - "3000:3000"  # or your frontend port
-    environment:
-      - VITE_API_URL=http://api:8000  # internal docker network
-      - VITE_WS_URL=ws://148.230.93.55:8012  # external access
-    depends_on:
-      - api
-    networks:
-      - sales_training_network
-    restart: unless-stopped
+  # frontend:
+  #   build:
+  #     context: ./frontend  # adjust path to your frontend folder
+  #     dockerfile: Dockerfile
+  #   container_name: sales_training_frontend
+  #   ports:
+  #     - "3000:3000"  # or your frontend port
+  #   environment:
+  #     - VITE_API_URL=http://api:8000  # internal docker network
+  #     - VITE_WS_URL=ws://148.230.93.55:8012  # external access
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - sales_training_network
+  #   restart: unless-stopped
 
-  # FastAPI Application
+  # # FastAPI Application
   api:
     build: .
     container_name: sales_training_api
