@@ -1300,6 +1300,7 @@
                 console.log('✅ WebSocket connected');
             };
             
+            
             ws.onmessage = (event) => {
                 const data = JSON.parse(event.data);
                 handleWebSocketMessage(data);
