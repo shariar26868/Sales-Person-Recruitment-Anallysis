@@ -1292,7 +1292,7 @@
             updateStatus('connecting', 'Connecting...');
             
             // Connect WebSocket
-            ws = new WebSocket(`ws://localhost:8000/conversations/api/conversation/ws/live-conversation/${meetingId}`);
+            ws = new WebSocket(`ws://148.230.93.55:8001/conversations/api/conversation/ws/live-conversation/${meetingId}`);
             
             ws.onopen = () => {
                 console.log('✅ WebSocket connected');
