@@ -1,2 +1,104 @@
-.envgit commit -m "first commit"
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+pip-wheel-metadata/
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+env/
+venv.bak/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# mypy, pylance, pyright caches
+.mypy_cache/
+.pyright/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# IDEs
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Runtime databases
+*.sqlite3
+db.sqlite3
+
+# Docker
+*.env.docker
+docker-compose.override.yml
+docker-compose.*.yml
+**/mongodb_data/
+mongodb_data/
+data/
+
+# Node (if any frontend)
+node_modules/
+
+# Secrets / credentials
 .env
+.env.*
+*.pem
+*.key
+*.crt
+aws_credentials
+credentials
+
+# Editor temporary files
+*~
+*.swp
+*.swo
+*.bak
+
+# Coverage / profiling
+coverage/
+.profiler
+
+# Misc
+*.tmp
+*.cache
+
+# Keep Git metadata out of commits
+.gitignore
+
+# End of .gitignore

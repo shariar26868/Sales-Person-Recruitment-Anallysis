@@ -1,95 +1,7 @@
-# version: '3.8'
-
-# services:
-#   # FastAPI Application
-#   api:
-#     build: .
-#     container_name: sales_training_api
-#     ports:
-#       - "8012:8000"
-#     environment:
-#       - OPENAI_API_KEY=${OPENAI_API_KEY}
-#       - ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
-#       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-#       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-#       - AWS_REGION=${AWS_REGION}
-#       - S3_BUCKET_NAME=${S3_BUCKET_NAME}
-#       - MONGODB_URL=mongodb://mongodb:27017
-#       - MONGODB_DB_NAME=${MONGODB_DB_NAME}
-#       - APP_ENV=${APP_ENV}
-#       - DEBUG=${DEBUG}
-#     depends_on:
-#       - mongodb
-#     volumes:
-#       - ./app:/app/app
-#     networks:
-#       - sales_training_network
-#     restart: unless-stopped
-
-#   # MongoDB
-#   mongodb:
-#     image: mongo:7.0
-#     container_name: sales_training_mongodb
-#     ports:
-#       - "27017:27017"
-#     environment:
-#       - MONGO_INITDB_DATABASE=sales_training_db
-#     volumes:
-#       - mongodb_data:/data/db
-#     networks:
-#       - sales_training_network
-#     restart: unless-stopped
-
-#   # Mongo Express (Web UI for MongoDB - optional)
-#   mongo-express:
-#     image: mongo-express:latest
-#     container_name: sales_training_mongo_express
-#     ports:
-#       - "8081:8081"
-#     environment:
-#       - ME_CONFIG_MONGODB_SERVER=mongodb
-#       - ME_CONFIG_MONGODB_PORT=27017
-#       - ME_CONFIG_BASICAUTH_USERNAME=admin
-#       - ME_CONFIG_BASICAUTH_PASSWORD=admin123
-#     depends_on:
-#       - mongodb
-#     networks:
-#       - sales_training_network
-#     restart: unless-stopped
-
-# volumes:
-#   mongodb_data:
-#     driver: local
-
-# networks:
-#   sales_training_network:
-#     driver: bridge
-
-
-
-
-
 version: '3.8'
 
 services:
-  # Frontend Application (Add this)
-  # frontend:
-  #   build:
-  #     context: ./frontend  # adjust path to your frontend folder
-  #     dockerfile: Dockerfile
-  #   container_name: sales_training_frontend
-  #   ports:
-  #     - "3000:3000"  # or your frontend port
-  #   environment:
-  #     - VITE_API_URL=http://api:8000  # internal docker network
-  #     - VITE_WS_URL=ws://148.230.93.55:8012  # external access
-  #   depends_on:
-  #     - api
-  #   networks:
-  #     - sales_training_network
-  #   restart: unless-stopped
-
-  # # FastAPI Application
+  # FastAPI Application
   api:
     build: .
     container_name: sales_training_api
@@ -102,7 +14,7 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_REGION=${AWS_REGION}
       - S3_BUCKET_NAME=${S3_BUCKET_NAME}
-      - MONGODB_URL=mongodb://mongodb:27017
+      - MONGODB_URL=${MONGODB_URL}
       - MONGODB_DB_NAME=${MONGODB_DB_NAME}
       - APP_ENV=${APP_ENV}
       - DEBUG=${DEBUG}
@@ -137,6 +49,7 @@ services:
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_URL=${MONGODB_URL}
       - ME_CONFIG_BASICAUTH_USERNAME=admin
       - ME_CONFIG_BASICAUTH_PASSWORD=admin123
     depends_on:
